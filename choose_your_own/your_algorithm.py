@@ -40,9 +40,23 @@ clf.fit(features_train, labels_train)
 acc = clf.score(features_test, labels_test)
 print "k-nearest neighbors acc: ", acc
 
+## Adaboost
+from sklearn.ensemble import AdaBoostClassifier
 
+clf = AdaBoostClassifier()
+clf.fit(features_train, labels_train)
 
+acc = clf.score(features_test, labels_test)
+print "adaboost acc: ", acc
 
+## Random Forest
+from sklearn.ensemble import RandomForestClassifier
+
+clf = RandomForestClassifier()
+clf.fit(features_train, labels_train)
+
+acc = clf.score(features_test, labels_test)
+print "random forest acc: ", acc
 
 
 try:

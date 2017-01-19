@@ -34,32 +34,34 @@ plt.show()
 ## K-Nearest Neighbors
 from sklearn.neighbors import KNeighborsClassifier
 
-clf = KNeighborsClassifier(n_neighbors=3)
-clf.fit(features_train, labels_train)
+clf1 = KNeighborsClassifier(n_neighbors=3)
+clf1.fit(features_train, labels_train)
 
-acc = clf.score(features_test, labels_test)
+acc = clf1.score(features_test, labels_test)
 print "k-nearest neighbors acc: ", acc
 
 ## Adaboost
 from sklearn.ensemble import AdaBoostClassifier
 
-clf = AdaBoostClassifier()
-clf.fit(features_train, labels_train)
+clf2 = AdaBoostClassifier()
+clf2.fit(features_train, labels_train)
 
-acc = clf.score(features_test, labels_test)
+acc = clf2.score(features_test, labels_test)
 print "adaboost acc: ", acc
 
 ## Random Forest
 from sklearn.ensemble import RandomForestClassifier
 
-clf = RandomForestClassifier()
-clf.fit(features_train, labels_train)
+clf3 = RandomForestClassifier()
+clf3.fit(features_train, labels_train)
 
-acc = clf.score(features_test, labels_test)
+acc = clf3.score(features_test, labels_test)
 print "random forest acc: ", acc
 
 
 try:
-    prettyPicture(clf, features_test, labels_test)
+    prettyPicture(clf1, features_test, labels_test)
+    prettyPicture(clf2, features_test, labels_test)
+    prettyPicture(clf3, features_test, labels_test)
 except NameError:
     pass

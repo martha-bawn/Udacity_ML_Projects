@@ -31,7 +31,14 @@ plt.show()
 ### your code here!  name your classifier object clf if you want the 
 ### visualization code (prettyPicture) to show you the decision boundary
 
+## K-Nearest Neighbors
+from sklearn.neighbors import KNeighborsClassifier
 
+clf = KNeighborsClassifier(n_neighbors=3)
+clf.fit(features_train, labels_train)
+
+acc = clf.score(features_test, labels_test)
+print "k-nearest neighbors acc: ", acc
 
 
 

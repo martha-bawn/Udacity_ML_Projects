@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+import numpy as np
 
 def outlierCleaner(predictions, ages, net_worths):
     """
@@ -12,9 +12,12 @@ def outlierCleaner(predictions, ages, net_worths):
     """
     
     cleaned_data = []
+    errors = predictions - net_worths
+    max_keep = np.percentile(errors, 90)
 
-    ### your code goes here
-
+    for i in range(len(predictions)):
+        if errors[i] <= max_keep:
+            cleaned_data.append((ages[i], net_worths[i], errors[i]))
     
     return cleaned_data
 

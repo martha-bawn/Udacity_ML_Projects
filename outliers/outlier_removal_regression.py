@@ -76,6 +76,7 @@ if len(cleaned_data) > 0:
 
         print "cleaned slope: ", reg.coef_[0]
         print "cleaned score: ", reg.score(ages_test, net_worths_test)
+        
         plt.plot(ages, reg.predict(ages), color="blue")
     except NameError:
         print "you don't seem to have regression imported/created,"

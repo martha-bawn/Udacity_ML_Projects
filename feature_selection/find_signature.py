@@ -2,6 +2,7 @@
 
 import pickle
 import numpy
+import sys
 numpy.random.seed(42)
 
 
@@ -12,7 +13,6 @@ words_file = "../text_learning/your_word_data.pkl"
 authors_file = "../text_learning/your_email_authors.pkl"
 word_data = pickle.load( open(words_file, "r"))
 authors = pickle.load( open(authors_file, "r") )
-
 
 
 ### test_size is the percentage of events assigned to the test set (the
@@ -29,6 +29,8 @@ features_train = vectorizer.fit_transform(features_train)
 features_test  = vectorizer.transform(features_test).toarray()
 
 
+
+
 ### a classic way to overfit is to use a small number
 ### of data points and a large number of features;
 ### train on only 150 events to put ourselves in this regime
@@ -38,6 +40,18 @@ labels_train   = labels_train[:150]
 
 
 ### your code goes here
+from sklearn.tree import DecisionTreeClassifier
 
+clf = DecisionTreeClassifier()
+clf.fit(features_train, labels_train)
+
+print clf.score(features_test, labels_test)
+
+# for i, f in enumerate(clf.feature_importances_):
+# 	if f > 0.2:
+# 		print i, f
+
+
+# print vectorizer.get_feature_names()[21323]
 
 

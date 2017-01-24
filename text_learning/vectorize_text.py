@@ -23,8 +23,8 @@ from parse_out_email_text import parseOutText
 """
 
 
-from_sara  = open("from_sara.txt", "r")
-from_chris = open("from_chris.txt", "r")
+from_sara  = open("../text_learning/from_sara.txt", "r")
+from_chris = open("../text_learning/from_chris.txt", "r")
 
 from_data = []
 word_data = []
@@ -52,7 +52,7 @@ for name, from_person in [("sara", from_sara), ("chris", from_chris)]:
 
         ### use str.replace() to remove any instances of the words
         ### ["sara", "shackleton", "chris", "germani"]
-        for word in ["sara", "shackleton", "chris", "germani"]:
+        for word in ["sara", "shackleton", "chris", "germani", "sshacklensf", "cgermannsf"]:
             text = text.replace(word, "")
 
         ### append the text to word_data
@@ -86,5 +86,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 vectorizer = TfidfVectorizer(stop_words='english')
 vectorizer.fit_transform(word_data)
 
-print len(vectorizer.get_feature_names())
+feature_names = vectorizer.get_feature_names()
+
+print "sshacklensf" in feature_names
+print len(feature_names)
 

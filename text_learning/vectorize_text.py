@@ -73,8 +73,8 @@ print word_data[152]
 from_sara.close()
 from_chris.close()
 
-pickle.dump( word_data, open("your_word_data.pkl", "w") )
-pickle.dump( from_data, open("your_email_authors.pkl", "w") )
+pickle.dump( word_data, open("../text_learning/your_word_data.pkl", "w") )
+pickle.dump( from_data, open("../text_learning/your_email_authors.pkl", "w") )
 
 
 

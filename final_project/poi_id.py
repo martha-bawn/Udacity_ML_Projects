@@ -2,6 +2,8 @@
 
 import sys
 import pickle
+import pandas as pd
+import numpy as np
 sys.path.append("../tools/")
 
 from feature_format import featureFormat, targetFeatureSplit
@@ -16,7 +18,17 @@ features_list = ['poi','salary'] # You will need to use more features
 with open("final_project_dataset.pkl", "r") as data_file:
     data_dict = pickle.load(data_file)
 
+# explore dataset
+data_df = pd.DataFrame.from_dict(data_dict, orient='index')
+print data_df.shape
+print data_df.columns
+data_df = data_df.replace('NaN', np.nan)
+print data_df.isnull().sum()
+print data_df['poi'].value_counts()
+
 ### Task 2: Remove outliers
+data_dict.pop('TOTAL', '')
+
 ### Task 3: Create new feature(s)
 ### Store to my_dataset for easy export below.
 my_dataset = data_dict
@@ -25,7 +37,7 @@ my_dataset = data_dict
 data = featureFormat(my_dataset, features_list, sort_keys = True)
 labels, features = targetFeatureSplit(data)
 
-### Task 4: Try a varity of classifiers
+### Task 4: Try a variety of classifiers
 ### Please name your classifier clf for easy export below.
 ### Note that if you want to do PCA or other multi-stage operations,
 ### you'll need to use Pipelines. For more info:

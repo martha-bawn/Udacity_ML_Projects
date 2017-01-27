@@ -18,14 +18,6 @@ features_list = ['poi','salary'] # You will need to use more features
 with open("final_project_dataset.pkl", "r") as data_file:
     data_dict = pickle.load(data_file)
 
-# explore dataset
-data_df = pd.DataFrame.from_dict(data_dict, orient='index')
-print data_df.shape
-print data_df.columns
-data_df = data_df.replace('NaN', np.nan)
-print data_df.isnull().sum()
-print data_df['poi'].value_counts()
-
 ### Task 2: Remove outliers
 data_dict.pop('TOTAL', '')
 

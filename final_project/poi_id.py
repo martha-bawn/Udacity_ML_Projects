@@ -22,6 +22,21 @@ with open("final_project_dataset.pkl", "r") as data_file:
 data_dict.pop('TOTAL', '')
 
 ### Task 3: Create new feature(s)
+for person in data_dict:
+    if data_dict[person]['to_messages'] != 'Nan' and data_dict[person]['from_messages'] != 'Nan':
+        data_dict[person]['total_messages'] = data_dict[person]['to_messages'] + data_dict[person]['from_messages']
+    else:
+        data_dict[person]['total_messages'] = 'NaN'
+    
+    if data_dict[person]['from_poi_to_this_person'] != 'NaN' and data_dict[person]['from_this_person_to_poi'] != 'NaN':
+        data_dict[person]['total_poi_messages'] = data_dict[person]['from_this_person_to_poi'] + data_dict[person]['from_poi_to_this_person']
+    else:
+        data_dict[person]['total_poi_messages'] = 'NaN'
+    
+    if data_dict[person]['total_messages'] != 'Nan' and data_dict[person]['total_poi_messages'] != 'NaN':
+        data_dict[person]['prop_messages_with_poi'] = float(data_dict[person]['total_poi_messages']) / float(data_dict[person]['total_messages'])
+    else:
+        data_dict[person]['prop_messages_with_poi'] = 'NaN'
 ### Store to my_dataset for easy export below.
 my_dataset = data_dict
 

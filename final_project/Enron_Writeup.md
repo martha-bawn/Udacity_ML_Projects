@@ -44,6 +44,8 @@ I removed the 'TOTAL' row, since the data included a sum of all values, but this
 ## Feature Creation and Selection
 What features did you end up using in your POI identifier, and what selection process did you use to pick them? Did you have to do any scaling? Why or why not? As part of the assignment, you should attempt to engineer your own feature that does not come ready-made in the dataset -- explain what feature you tried to make, and the rationale behind it. (You do not necessarily have to use it in the final analysis, only engineer and test it.) In your feature selection step, if you used an algorithm like a decision tree, please also give the feature importances of the features that you use, and if you used an automated feature selection function like SelectKBest, please report the feature scores and reasons for your choice of parameter values.  [relevant rubric items: “create new features”, “properly scale features”, “intelligently select feature”]
 
+It seems like the information that would be really useful from the email fields is how much the person corresponded with POIs. So I combined `to_messages` and `from_messages` into `total_messages` and `from_this_person_to_poi` and `from_poi_to_this_person` into `total_poi_messages`. Then, to account for the fact that some people send many more emails than others, I standardized this metric with `prop_messages_with_poi', which is the ratio of `total_poi_messages` to `total_messages`.
+
 ## Algorithm Selection
 What algorithm did you end up using? What other one(s) did you try? How did model performance differ between algorithms?  [relevant rubric item: “pick an algorithm”]
 
